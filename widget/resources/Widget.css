@@ -1,0 +1,205 @@
+
+/* Just a compact baseline reset. */
+.doolsWidget div, .doolsWidget span, .doolsWidget iframe, .doolsWidget p, 
+.doolsWidget pre, .doolsWidget a, .doolsWidget abbr, .doolsWidget acronym, 
+.doolsWidget code, .doolsWidget em, .doolsWidget img, .doolsWidget ins, 
+.doolsWidget strong, .doolsWidget b, .doolsWidget u, .doolsWidget i, 
+.doolsWidget dl, .doolsWidget dt, .doolsWidget dd, .doolsWidget ol, 
+.doolsWidget ul, .doolsWidget li,fieldset, .doolsWidget form, .doolsWidget label, 
+.doolsWidget legend,table, .doolsWidget caption, .doolsWidget tbody, 
+.doolsWidget tfoot, .doolsWidget thead, .doolsWidget tr, .doolsWidget th, 
+.doolsWidget td {
+	margin: 0; padding: 0;
+	border: 0; outline: 0;
+	font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit;
+	vertical-align: baseline;
+}
+
+/* A bunch of additional cursor styles for use when Resizing a node */
+.doolsResizingNorth 		{cursor: n-resize;}
+.doolsResizingNorthEast {cursor: ne-resize;}
+.doolsResizingEast 		{cursor: e-resize;}
+.doolsResizingSouthEast {cursor: se-resize;}
+.doolsResizingSouth 		{cursor: s-resize;}
+.doolsResizingSouthWest {cursor: sw-resize;}
+.doolsResizingWest		{cursor: e-resize;}
+.doolsResizingNorthWest {cursor: nw-resize;}
+
+
+.doolsWidget {
+	font-family:'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif;
+}
+
+.doolsWidget div {
+	position: relative;
+	display: block;
+}
+
+.doolsWidget label {
+	margin-left: 3px;
+	margin-right: 3px;
+}
+
+.doolsWidgetFloating {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	z-index: 100000; /* It rocks on top. */
+	color: #444;
+	background: #fff;
+	border: 1px solid #888;
+	box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+	-moz-box-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+}
+
+.doolsWidget .doolsWidgetPanel {
+	padding: 5px 6px 3px 6px;
+	outline:0; /* remove this line if keyboard focus on dialog startup is an issue. tab still takes you to first focusable element */
+
+	background: #EBEBEB url('images/widget/panel.png') bottom left repeat-x;
+	border-bottom:1px solid #FFFFFF;
+	border-top:1px solid #888888;
+	margin:0;
+}
+
+.doolsWidget .doolsWidgetInputMini {
+	width: 4em;
+	display: block;
+	float: left;
+}
+
+.doolsWidget .doolsWidgetButtonMini {
+	position: relative;
+	display: block;
+	float: left;
+	height: 13px;
+	width: 13px;
+	cursor: pointer;
+	margin: 2px 2px 0px;
+	
+	text-indent: -9999px;
+	
+	background: #ccc;
+}
+	
+	.doolsWidget .doolsWidgetIconDown,
+	.doolsWidget .doolsWidgetIconUp,
+	.doolsWidget .doolsWidgetIconClose {
+		background: transparent url(../../../dijit/themes/tundra/images/spriteRoundedIconsSmall.png) no-repeat scroll;
+	}
+	
+	.doolsWidget .doolsWidgetIconDown			{background-position: -47px 0;}
+	.doolsWidget .doolsWidgetIconUp 				{background-position: -47px 0;}
+	.doolsWidget .doolsWidgetIconClose			{background-position: -61px 0;}
+	
+	.doolsWidget .doolsWidgetIconDown-hover	{background-position: -47px 0;}
+	.doolsWidget .doolsWidgetIconUp-hover		{background-position: -47px 0;}
+	.doolsWidget .doolsWidgetIconClose-hover	{background-position: -61px 0;}
+	
+	.doolsWidget .doolsWidgetIconDown-active	{background-position: -47px 0;}
+	.doolsWidget .doolsWidgetIconUp-active		{background-position: -47px 0;}
+	.doolsWidget .doolsWidgetIconClose-active	{background-position: -61px 0;}
+	
+
+.doolsWidget .doolsDragHandle {
+	cursor: move;
+}
+
+.doolsWidget table {
+	width: 100%; 
+	padding: 0;
+	border-spacing: 0;
+}
+	.doolsWidget table > thead > tr > th {
+		font-weight: bold;
+		border-top: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
+		padding: 0.6em 0.5em 0.2em;
+		background: #fff;
+		vertical-align:middle;
+	}
+	
+	.doolsWidget table > tbody > tr {
+		background: #f1f1f1;
+		vertical-align:middle;
+	}
+
+	.doolsWidget table > tbody > tr > th,
+	.doolsWidget table > tbody > tr > td {
+		margin: 0px;
+		padding: 0.4em 0.5em 0.4em;
+		border: 1px solid #fff;
+		border-color:#fff #fff #eee #eee;
+		vertical-align:middle;
+	}
+	
+	
+	.doolsWidget table.dijitReset {
+		width: auto;
+   	border:medium none;
+   	margin:0; padding: 0;
+	}
+		.doolsWidget table.dijitReset tr {
+	   	vertical-align: top;
+		}
+	.doolsWidget table.dijitReset th {
+		 padding: 0; border: medium none;
+	} 
+	.doolsWidget table.dijitReset td {
+		 margin: 0; padding: 0;
+		 border: medium none;
+	}
+	
+	
+	
+	.doolsWidget .dijitReset div {display: block; position: static;}
+	.doolsWidget .dijitReset div.dijitSliderBarContainerH, 
+	.doolsWidget .dijitReset div.dijitSliderBarContainerV {
+		position: relative;
+		display: block;
+	}
+		.doolsWidget .dijitReset .dijitSliderBumperH {
+			border-top-width:1px;
+			border-bottom-width:1px;
+			height:4px;
+			width:8px;
+		}
+	
+		.doolsWidget .dijitReset .dijitSliderBarH,
+		.doolsWidget .dijitReset .dijitSliderBarV {
+			-moz-background-clip:border;
+			-moz-background-inline-policy:continuous;
+			-moz-background-origin:padding;
+/*			background:#C0C2C5 url(../images/sliderFull.png) repeat-x scroll left top;*/
+/*			border-color:#AAB0BB;*/
+			border-width:1px 0;
+		}
+		.doolsWidget .dijitReset .dijitSliderTopBumper {
+			border-top-width: 1px;
+/*			border-color: #aab0bb;*/
+		}
+		.doolsWidget .dijitReset .dijitSliderBottomBumper {
+			border-bottom-width: 1px;
+	/*		border-color: #aab0bb;*/
+		}
+		
+.doolsClearfix:after {
+	clear: both;
+	content: '.';
+	display: block;
+	visibility: hidden;
+	height: 0;
+}
+
+.doolsClearfix {
+	display: inline-block;
+}
+
+* html .doolsClearfix {
+	height: 1%;
+}
+
+.doolsClearfix {
+	display: block;
+}

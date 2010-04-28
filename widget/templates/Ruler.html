@@ -1,0 +1,50 @@
+<div class="doolsWidget doolsWidgetFloating doolsRuler tundra">
+	<div class="doolsRulerScaleIndicator" dojoAttachPoint="scaleIndicator"></div>
+	<div class="doolsRulerScale doolsDragHandle" dojoAttachPoint="scale"></div>
+	
+	<div class="doolsRulerPanel">
+		<div class="doolsWidgetPanel doolsDragHandle doolsRulerDisplay doolsClearfix">
+			<label for="doolsRuler${id}_axisX">x:</label><!-- <input class="doolsWidgetInputMini" dojoAttachPoint="displayInputX" />-->
+				<input  id="doolsRuler${id}_axisX" class="doolsWidgetInputMini" type="text" value="0" dojoAttachPoint="displayInputX" dojoType="dijit.form.NumberTextBox" intermediateChanges="true">
+			<label for="doolsRuler${id}_axisY">y:</label>
+				<input  id="doolsRuler${id}_axisY" class="doolsWidgetInputMini" type="text" value="0" dojoAttachPoint="displayInputY" dojoType="dijit.form.NumberTextBox" intermediateChanges="true">
+			<label for="doolsRuler${id}_size">size:</label>
+				<input  id="doolsRuler${id}_size" class="doolsWidgetInputMini" type="text" value="0" dojoAttachPoint="displayInputSize" dojoType="dijit.form.NumberTextBox" intermediateChanges="true">
+			<div class="doolsRulerDisplayButtons">
+				<span class="doolsWidgetButtonMini doolsWidgetIconUp" dojoAttachPoint="optionsToggleButton">Options</span>
+				<span class="doolsWidgetButtonMini doolsWidgetIconClose" dojoAttachPoint="hideButton">Hide</span>
+			</div>
+			<div class="doolsRulerResizeHandle" dojoAttachPoint="resizeHandle"></div>
+		</div>
+		<div class="doolsRulerInfo" style="height: auto; display: none;" dojoAttachPoint="optionsPanel">
+			<table class="dools">
+				<thead>
+					<tr>
+						<th colspan="2">Options</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th>Snap to Nodes</th>
+						<td><input type="checkbox" dojoType="dijit.form.CheckBox" dojoAttachPoint="snapToNodesInput" /></td>
+					</tr>
+					<tr>
+						<th>Snap Radius</th>
+						<td>
+							<div dojoType="dijit.form.HorizontalSlider" dojoAttachPoint="snapRadiusInput"
+								intermediateChanges="true" value="100" minimum="10" maximum="100" style="width:170px;">
+							<p dojoAttachPoint="snapRadiusText"></p>
+						</td>
+						
+					</tr>
+					<tr>
+						<th>Opacity</th>
+						<td><div dojoType="dijit.form.HorizontalSlider" dojoAttachPoint="opacityInput"
+								intermediateChanges="true" value="100" minimum="10" maximum="100" style="width:170px;"></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

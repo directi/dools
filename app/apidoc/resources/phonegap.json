@@ -1,0 +1,115 @@
+[
+	{name:"android", children:[
+		{name:"framework", children:[
+			{name:"assets", children:[
+				{name:"www", children:[
+					{name:"phonegap", type:"object"}
+				]}
+			]}
+		]},
+		{name:"js", children:[
+			{name:"accelerometer", type:"object"},
+			{name:"camera", type:"object"},
+			{name:"compass", type:"object"},
+			{name:"contact", type:"object"},
+			{name:"device", type:"object"},
+			{name:"file", type:"object"},
+			{name:"geolocation", type:"object"},
+			{name:"media", type:"object"},
+			{name:"network", type:"object"},
+			{name:"notification", type:"object"},
+			{name:"position", type:"object"}
+		]}
+	]},
+	{name:"blackberry", children:[
+		{name:"framework", children:[
+			{name:"src", children:[
+				{name:"www", children:[
+					{name:"phonegap-min", type:"object"},
+					{name:"phonegap", type:"object"}
+				]}
+			]}
+		]},
+		{name:"js", children:[
+			{name:"acceleration", type:"object"},
+			{name:"accelerometer", type:"object"},
+			{name:"camera", type:"object"},
+			{name:"compass", type:"object"},
+			{name:"contacts", type:"object"},
+			{name:"device", type:"object"},
+			{name:"file", type:"object"},
+			{name:"geolocation", type:"object"},
+			{name:"media", type:"object"},
+			{name:"network", type:"object"},
+			{name:"notification", type:"object"},
+			{name:"orientation", type:"object"},
+			{name:"phonegap", type:"object"},
+			{name:"position", type:"object"},
+			{name:"sms", type:"object"},
+			{name:"telephony", type:"object"},
+			{name:"utility", type:"object"}
+		]}
+	]},
+	{name:"iphone", children:[
+		{name:"PhoneGapLib", children:[
+			{name:"javascripts", children:[
+				{name:"core", children:[
+					{name:"acceleration", type:"object"},
+					{name:"accelerometer", type:"object"},
+					{name:"bonjour", type:"object"},
+					{name:"camera", type:"object"},
+					{name:"compass", type:"object"},
+					{name:"contact", type:"object"},
+					{name:"debugconsole", type:"object"},
+					{name:"device", type:"object"},
+					{name:"file", type:"object"},
+					{name:"geolocation", type:"object"},
+					{name:"map", type:"object"},
+					{name:"media", type:"object"},
+					{name:"network", type:"object"},
+					{name:"notification", type:"object"},
+					{name:"orientation", type:"object"},
+					{name:"position", type:"object"},
+					{name:"sms", type:"object"},
+					{name:"telephony", type:"object"},
+					{name:"uicontrols", type:"object"}
+				]}
+			]}
+		]}
+	]},
+	{name:"symbian.wrt", children:[
+		{name:"javascripts", children:[
+			{name:"acceleration", type:"object"},
+			{name:"accelerometer", type:"object"},
+			{name:"camera", type:"module", children:[
+				{name:"com.nokia.device.camera", type:"object"},
+				{name:"com.nokia.device.framework", type:"object"},
+				{name:"com.nokia.device.utility", type:"object"},
+				{name:"s60_camera", type:"object"}
+			]},
+			{name:"contact", type:"object"},
+			{name:"device", type:"object"},
+			{name:"geolocation", type:"object"},
+			{name:"media", type:"object"},
+			{name:"notification", type:"object"},
+			{name:"orientation", type:"object"},
+			{name:"position", type:"object"},
+			{name:"sms", type:"object"},
+			{name:"storage", type:"object"}
+		]},
+		{name:"www", children:[
+			{name:"js", children:[
+				{name:"controller", type:"object"},
+				{name:"phonegap", type:"object"}
+			]}
+		]}
+	]},
+	{name:"winmo", children:[
+		{name:"www", children:[
+			{name:"js", children:[
+				{name:"device", type:"object"},
+				{name:"media", type:"object"}
+			]}
+		]}
+	]}
+]

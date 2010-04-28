@@ -1,0 +1,66 @@
+body.doolsResizingEast {
+	cursor: e-resize;
+}
+
+.doolsRuler  {
+	width: 300px;
+}
+
+	.doolsRuler .doolsRulerScaleIndicator {
+		width: 1px;
+		height: 12px;
+		background: #c00;
+		display: block;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		z-index: 100001;
+	}
+	.doolsRuler .doolsRulerScale {
+		height: 12px;
+		padding: 11px 0 0 11px;
+		/* Minus 1px because I'm including the border in the ruler's width. */
+		background: #fff url("images/ruler/scale.png") -1px 0 repeat-x;
+		overflow: hidden;
+	}
+		.doolsRuler .doolsRulerScale div {
+			float: left;
+			display: inline;
+			width: 20px;
+			text-align: center;
+			font-size:8px;
+		}
+
+	
+			.doolsRuler .doolsRulerPanel .doolsRulerDisplay label {
+				float: left;
+				display: block;
+				margin: 4px 0 0 0;
+			}
+			
+			.doolsRuler .doolsRulerPanel .doolsRulerDisplay .doolsRulerDisplayButtons {
+				display: block;
+				float: right;
+				margin: 0 0 0 10px;
+			}
+		
+		.doolsRuler .doolsRulerResizeHandle {
+			width: 5px;
+			height: 100%;
+			position: absolute;
+			right: 0px;
+			top: 0px;
+			background: red;
+			z-index: 100002;
+			cursor:e-resize;
+		}
+/*				.doolsWidgetRollupButton*/
+/*				.doolsWidgetCloseButton*/
+		.doolsRuler .doolsRulerPanel .doolsRulerInfo {
+/*			border-top: 1px solid #888;
+			padding: 3px;*/
+		}
+		
+		.doolsRuler table tbody th {
+			width: 100px;
+		}

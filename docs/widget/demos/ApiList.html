@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<title>API List</title>
+	<style type="text/css">
+		@import "../../../../dojo/resources/dojo.css";
+		@import "../../../../dijit/themes/nihilo/nihilo.css";
+		@import "../resources/ApiList.css";
+	</style>
+</head>
+<body class="nihilo">
+	
+	<br />
+	
+	Search: <input type="text" style="margin:0 1em; width:300; font-size:20px;"
+				onkeyup="var v = this.value; dijit.registry.byClass('dools.docs.widget.ApiList').forEach(function(w){w.filter(v)})" />
+	<span id="clicked" style="color:red; font-size:20px;">Nothing clicked yet ...</span>
+	
+	<div style="width:30%; float:left;">
+		<h1>dools API</h1>
+		<div id="l3" dojoType="dools.docs.widget.ApiList"
+			urls="../resources/dojoApi-dools.json">
+			<script type="dojo/method" event="onClick" args="evt,name,type">
+				dojo.byId("clicked").innerHTML = name + " (" + type + ")";
+			</script>
+		</div>
+	</div>
+	
+	<div style="width:30%; float:left;">
+		<h1>dojo+dijit API list</h1>
+		<div id="l1" dojoType="dools.docs.widget.ApiList"
+			urls="../resources/dojoApi-dojo.json,../resources/dojoApi-dijit.json">
+			<script type="dojo/method" event="onClick" args="evt,name,type">
+				dojo.byId("clicked").innerHTML = name + " (" + type + ")";
+			</script>
+		</div>
+	</div>
+
+	<div style="width:30%; float:left;">
+		<h1>dojox API list</h1>
+		<div id="l2" dojoType="dools.docs.widget.ApiList"
+			urls="../resources/dojoApi-dojox.json">
+			<script type="dojo/method" event="onClick" args="evt,name,type">
+				dojo.byId("clicked").innerHTML = name + " (" + type + ")";
+			</script>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="../../../../dojo/dojo.js" djConfig="isDebug:true, parseOnLoad:true"></script>
+	<script type="text/javascript" src="../ApiList.js"></script>
+</body>
+</html>

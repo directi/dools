@@ -1,0 +1,24 @@
+.doolsCrosshair {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 998;
+}
+    .doolsCrosshair .doolsCrosshairVertical, 
+    .doolsCrosshair .doolsCrosshairHorizontal {
+        background: lightgrey;
+        position:absolute;
+        left:0px;
+        top:0px;
+        width:1px;
+        height:1px;
+    }
+    .doolsCrosshair .doolsCrosshairHorizontal {
+    	width: 100%;
+    }
+    .doolsCrosshair .doolsCrosshairVertical {
+        height: 100%;
+    }
+

@@ -1,0 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<title>Demo: Dools Ruler: Bookmarklet</title>
+	
+	<style type="text/css">
+		@import "../../../dijit/themes/tundra/tundra.css";
+		@import "../../../dojo/resources/dojo.css";
+		@import "../../../dijit/themes/dijit.css";
+		
+		body {
+	    background:#fff url("../../../dijit/tests/images/testsBodyBg.gif") repeat-x top left;
+	    padding:2em 2em 2em 2em;
+    }
+	</style>
+</head>
+<body>
+	<a href="javascript:(function(){if(!window['dojo'] || !window['dools'] || !window['dools_ruler']){var dojoTag = document.createElement('script');dojoTag.setAttribute('type', 'text/javascript');dojoTag.setAttribute('djConfig', 'parseOnLoad:true');dojoTag.setAttribute('src', '_testRuler.js');dojoTag.onload = function(){window['dools_ruler'] = new dools.widget.Ruler();};dojoTag.onreadystatechange = function(){/loaded|complete/.test(script.readyState) && (window['dools_ruler'] = new dools.widget.Ruler());};document.body.appendChild(dojoTag);var styleTag = document.createElement('style');styleTag.setAttribute('type', 'text/css');styleTag.innerHTML = '@import \'../resources/Widget.css\';@import \'../resources/Ruler.css\'; body{background: #aaa;}';document.body.appendChild(styleTag);} else {window['dools_ruler'].toggle();}})();">Test</a>
+	
+	<div style="width:300px; height: 350px; margin: -50px 0px 100px 500px; background: #6CB5DF;">
+		<div style="width:260px; height: 200px; margin: 20px; background: #00F3F3;"></div>
+	</div>
+</body>
+</html>

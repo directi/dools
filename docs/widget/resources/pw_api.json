@@ -1,0 +1,160 @@
+[
+	{name:"pw", type:"module", children:[
+		{name:"desktop", children:[
+			{name:"BootConfig", type:"class"},
+			{name:"chat", children:[
+				{name:"ChatComponent", type:"class"},
+				{name:"ChatSession", type:"class"},
+				{name:"ChatSessionComponent", type:"class"},
+				{name:"DefaultMessageDecorator", type:"class"},
+				{name:"EditorPane", type:"class"},
+				{name:"JoinMUC", type:"class"},
+				{name:"Message", type:"class"},
+				{name:"MessageBroadcaster", type:"class"},
+				{name:"MessageSender", type:"class"},
+				{name:"MucOccupantStore", type:"class"},
+				{name:"Notification", type:"class"}
+			]},
+			{name:"Component", type:"class"},
+			{name:"ComponentDescriptor", type:"class"},
+			{name:"ComponentRegistry", type:"class"},
+			{name:"Dialog", type:"class"},
+			{name:"ExtensionPoint", type:"class"},
+			{name:"ExtensionRegistry", type:"class"},
+			{name:"history", children:[
+				{name:"Conf", type:"class"},
+				{name:"HistoryFetcher", type:"class"},
+				{name:"HistoryLogger", type:"class"},
+				{name:"HistoryViewer", type:"class"},
+				{name:"LinuxHistoryViewer", type:"class"},
+				{name:"OSXHistoryViewer", type:"class"},
+				{name:"WinHistoryViewer", type:"class"}
+			]},
+			{name:"home", children:[
+				{name:"FrequentlyUsedItems", type:"class"},
+				{name:"HomeComponent", type:"class"},
+				{name:"HomeWidget", type:"class"},
+				{name:"RecentlyClosedItems", type:"class"},
+				{name:"SubscriptionManager", type:"class"}
+			]},
+			{name:"Kernel", type:"class"},
+			{name:"login", children:[
+				{name:"LoginComponent", type:"class"},
+				{name:"LoginWidget", type:"class"},
+				{name:"TestLoginComponent", type:"class"},
+				{name:"xmppLogin", type:"object"}
+			]},
+			{name:"media", children:[
+				{name:"BrowserPlayer", type:"class"},
+				{name:"DefaultAudioNotifications", type:"class"},
+				{name:"MediaManager", type:"class"},
+				{name:"MediaPlayer", type:"class"},
+				{name:"SettingItem", type:"class"},
+				{name:"SettingsComponent", type:"class"},
+				{name:"SettingsWidget", type:"class"},
+				{name:"TitaniumPlayer", type:"class"}
+			]},
+			{name:"network", children:[
+				{name:"srv", type:"object"}
+			]},
+			{name:"notification", children:[
+				{name:"Alerts", type:"class"},
+				{name:"NotificationWidget", type:"class"}
+			]},
+			{name:"preferences", children:[
+				{name:"PreferencesDialog", type:"class"},
+				{name:"PreferencesManager", type:"class"}
+			]},
+			{name:"roster", children:[
+				{name:"BuddyDetailsDialog", type:"class"},
+				{name:"GroupDetailsDialog", type:"class"},
+				{name:"MenuItem", type:"class"},
+				{name:"MUCRoomsLoader", type:"class"},
+				{name:"MucStore", type:"class"},
+				{name:"MucTree", type:"class"},
+				{name:"PresenceArea", type:"class"},
+				{name:"PresenceAudioNotification", type:"class"},
+				{name:"PresenceSelector", type:"class"},
+				{name:"RosterComponent", type:"class"},
+				{name:"RosterDndSource", type:"class"},
+				{name:"RosterItemVcardDecorator", type:"class"},
+				{name:"RosterMenuComponent", type:"class"},
+				{name:"RosterStore", type:"class"},
+				{name:"RosterTree", type:"class"},
+				{name:"RosterVcard", type:"class"},
+				{name:"RosterWidget", type:"class"},
+				{name:"ToggleSplitter", type:"class"},
+				{name:"xmpp", children:[
+					{name:"RosterStore", type:"class"},
+					{name:"Vcard", type:"class"}
+				]}
+			]},
+			{name:"services", children:[
+				{name:"userapp", children:[
+					{name:"AuthService", type:"class"},
+					{name:"User", type:"class"},
+					{name:"UserService", type:"class"}
+				]},
+				{name:"util", type:"object"}
+			]},
+			{name:"shell", type:"module", children:[
+				{name:"DefaultLayoutContainer", type:"class"},
+				{name:"DefaultPerspective", type:"class"},
+				{name:"KeyboardHandler", type:"class"},
+				{name:"Shell", type:"class"},
+				{name:"ViewComponent", type:"class"},
+				{name:"WindowSizeHandler", type:"class"}
+			]},
+			{name:"storage", children:[
+				{name:"appStore", type:"object"},
+				{name:"userStore", type:"object"},
+				{name:"_base", type:"class"}
+			]},
+			{name:"Test", type:"class"},
+			{name:"transport", children:[
+				{name:"SAXParser", type:"class"},
+				{name:"TransportManager", type:"class"},
+				{name:"xmppSession", type:"object"},
+				{name:"xmppTransport", type:"object"}
+			]},
+			{name:"trayicon", children:[
+				{name:"TrayComponent", type:"class"},
+				{name:"TrayWidget", type:"class"}
+			]},
+			{name:"update", children:[
+				{name:"AutoUpdate", type:"class"},
+				{name:"AutoUpdateLinux", type:"class"},
+				{name:"AutoUpdateMac", type:"class"},
+				{name:"AutoUpdateWindows", type:"class"},
+				{name:"_AutoUpdate", type:"class"}
+			]},
+			{name:"userComponent", children:[
+				{name:"PasswordWidget", type:"class"},
+				{name:"ProxySettings", type:"class"},
+				{name:"ProxySettingsWidget", type:"class"},
+				{name:"UserComponent", type:"class"}
+			]},
+			{name:"util", type:"object"},
+			{name:"version", type:"object"},
+			{name:"widget", children:[
+				{name:"TextBox", type:"class"}
+			]},
+			{name:"wrappers", children:[
+				{name:"sessionWrapper", type:"object"}
+			]},
+			{name:"xmpp", children:[
+				{name:"util", children:[
+					{name:"console", children:[
+						{name:"XmppConsoleComponent", type:"class"},
+						{name:"XmppConsoleWidget", type:"class"}
+					]}
+				]},
+				{name:"xep", children:[
+					{name:"ping", children:[
+						{name:"XmppPingComponent", type:"class"}
+					]}
+				]}
+			]}
+		]}
+	]}
+]

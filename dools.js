@@ -1,0 +1,1 @@
+dojo.registerModule("dools", "..");

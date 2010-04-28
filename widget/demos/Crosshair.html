@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<title>Demo: Dools Crosshair</title>
+	<style type="text/css">
+		@import "../../../dijit/themes/tundra/tundra.css";
+		@import "../../../dojo/resources/dojo.css";
+		@import "../../../dijit/themes/dijit.css";
+		
+		body {
+			background:#fff url("../../../dijit/tests/images/testsBodyBg.gif") repeat-x top left;
+			padding:2em 2em 2em 2em;
+		}
+		h1 {
+			font-size:2em;
+			margin:0 0 1em 0;
+		}
+		
+		.tooltip {
+	    position:absolute;
+	    top:50px;
+	    left: 50px;
+	    border:1px solid #FFCD4B;
+	    background:#FFF08C;
+
+	    padding:0.5em;
+	    z-Index:9000;
+	    white-space:nowrap;
+		}
+		.active {
+			outline: 1px red solid!important;
+		}
+	</style>
+
+	<script type="text/javascript" src="../../../dojo/dojo.js" djConfig="parseOnLoad:true"></script>
+	<script type="text/javascript">
+		dojo.require("dools.widget.Crosshair");
+		
+		// in global scope so you can play with it from the console.
+		var crosshair;
+		
+		dojo.addOnLoad(function(){
+			var tooltip = document.createElement('div');
+					tooltip.setAttribute("class", "tooltip");
+					dojo.body().appendChild(tooltip);
+					
+			var scroll;
+		
+			
+			crosshair = new dools.widget.Crosshair({visible: true, staticVisible: false});
+			
+			crosshair.connect(crosshair, "onClick", function(e, node){
+				dojo.query(".active").removeClass("active");
+				dojo.query(node).addClass("active");
+			});
+			
+			crosshair.connect(crosshair, "onMouseMove", function(evt){
+				scroll = dojo._docScroll();
+				dojo.style(tooltip, "display", "block");
+				dojo.style(tooltip, "top", (evt.clientY+scroll.y+1)+"px");
+				dojo.style(tooltip, "left", (evt.clientX+scroll.x+1)+"px");
+				
+				tooltip.innerHTML = "Top: "+(evt.clientY+scroll.y)+"px; Left: "+(evt.clientX+scroll.x)+"px;";
+			});
+			
+			crosshair.connect(crosshair, "onHide", function(){
+				dojo.style(tooltip, "display", "none");
+				dojo.query(".active").removeClass("active");
+			});
+			crosshair.connect(crosshair, "onShow", function(){
+				dojo.style(tooltip, "display", "block");
+			});
+			
+			crosshair.connect(crosshair, "onDestroy", function(){
+				dojo.style(tooltip, "display", "none");
+				dojo.destroy("tooltip");
+				dojo.query(".active").removeClass("active");
+			});
+			
+			dojo.connect(dojo.byId('show_btn'), "onclick", function(){
+				if(crosshair != null){
+					crosshair.show();
+				} else {
+					alert("There's no crosshair! Reload to recreate it.");
+				}
+			});
+			dojo.connect(dojo.byId('hide_btn'), "onclick", function(){
+				if(crosshair != null){
+					crosshair.hide();
+				} else {
+					alert("There's no crosshair! Reload to recreate it.");
+				}
+			});
+			
+			
+			dojo.connect(dojo.byId('hideStatic_btn'), "onclick", function(){
+				if(crosshair != null){
+					crosshair.hideStatic();
+				} else {
+					alert("There's no crosshair! Reload to recreate it.");
+				}
+			});
+			
+			dojo.connect(dojo.byId('showStatic_btn'), "onclick", function(){
+				if(crosshair != null){
+					crosshair.showStatic();
+				} else {
+					alert("There's no crosshair! Reload to recreate it.");
+				}
+			});
+			
+			dojo.connect(dojo.byId('destroy_btn'), "onclick", function(){
+				crosshair.destroy();
+			});
+		});
+	</script>
+</head>
+<body class="tundra">
+test test
+	<div class="tooltip" style="left: 0px; top: 0px; background: blue; "></div>
+	<h1>Demo: Dools Crosshair</h1>
+	<div style="z-index: 6000; position: relative;">
+		<button id="show_btn" value="Show">Show</button>
+		<button id="hide_btn" value="Hide">Hide</button>
+		<button id="showStatic_btn" value="Show Static">Show Static</button>
+		<button id="hideStatic_btn" value="Hide Static">Hide Static</button>
+		<button id="destroy_btn" value="Destroy">Destroy</button>
+	</div>
+	       
+<p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
+<h2>Header Level 2</h2>
+	       
+<ol>
+   <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+   <li>Aliquam tincidunt mauris eu risus.</li>
+   <li>
+   <ol>
+   <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+   <li>Aliquam tincidunt mauris eu risus.</li>
+</ol>
+</li>
+</ol>
+
+<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p></blockquote>
+
+<h3>Header Level 3</h3>
+
+<ul>
+   <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+   <li>Aliquam tincidunt mauris eu risus.</li>
+</ul>
+
+<pre><code>
+#header h1 a { 
+	display: block; 
+	width: 300px; 
+	height: 80px; 
+}
+</code></pre>
+	<!-- Add in some of that kitchen sink style code	-->	
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<title>API Tree</title>
+	<style type="text/css">
+		@import "../../../../dojo/resources/dojo.css";
+		@import "../../../../dijit/themes/nihilo/nihilo.css";
+		@import "../resources/ApiTree.css";
+	</style>
+</head>
+<body class="nihilo">
+	
+	<h1 id="clicked" style="color:red;">Nothing clicked yet ...</h1>
+
+	<div style="width:30%; float:left;">
+		<h1>dools API alphabetically</h1>
+		<div dojoType="dools.docs.widget.ApiTree" urls="../resources/dojoApi-dools.json">
+			<script type="dojo/method" event="onNodeClick" args="treeNode,name,type">
+				dojo.byId("clicked").innerHTML = name + " (" + type + ")";
+			</script>
+		</div>
+	</div>
+	
+	<div style="width:30%; float:left;">
+		<h1>dojo API alphabetically</h1>
+		<div dojoType="dools.docs.widget.ApiTree" urls="../resources/dojoApi-dojo.json,../resources/dojoApi-dijit.json,../resources/dojoApi-dojox.json">
+			<script type="dojo/method" event="onNodeClick" args="treeNode,name,type">
+				dojo.byId("clicked").innerHTML = name + " (" + type + ")";
+			</script>
+		</div>
+	</div>
+	
+	<div style="width:30%; float:left;">
+		<h1>dojo API sorted by topics</h1>
+		<div dojoType="dools.docs.widget.ApiTree" urls="../resources/dojoTopics.json">
+			<script type="dojo/method" event="onNodeClick" args="treeNode,name,type,text">
+				dojo.byId("clicked").innerHTML = text + ": " + name + " (" + type + ")";
+			</script>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="../../../../dojo/dojo.js" djConfig="isDebug:true, parseOnLoad:true"></script>
+	<script type="text/javascript" src="../../../../dijit/_Widget.js"></script>
+	<script type="text/javascript" src="../../../../dijit/_Templated.js"></script>
+	<script type="text/javascript" src="../../../../dijit/Tree.js"></script>
+	<script type="text/javascript" src="../ApiTree.js"></script>
+</body>
+</html>
