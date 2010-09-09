@@ -23,7 +23,80 @@ dojo.declare(
 		// 		>>> typeof fp.getMethodData().docString
 		// 		"string"
 		
-		
+		getMethodData: function(methods) {
+            var methodData = this.inherited(arguments);
+            var publishData = [];
+            
+			for (var i = 0, l = methods.length; i<l; i++){
+				var p = this._getPublishDataFromMethod(methodData[methods[i]]);
+				publishData = publishData.concat(p);
+			}
+			return {
+			    methodData: methodData,
+			    publishData: publishData
+			};
+		},
+		_getPublishDataFromMethod: function(methodData) {
+            // FIXME: 
+            //      1. Does not work for functions with multiple publishes.
+            //      2. Does not work if multiple publishes have the same topic.
+            //      3. The source code consists of commented out lines as well!!
+            var lines = methodData.sourceCode.split("\n").filter(function(p){return p}), lastNonComment = -1, ret = [];
+            for(var i in lines) {
+                var publishIndex = lines[i].search("pw.publish"), lineAbovePublish = publishIndex - 1;
+                if(publishIndex === -1) {
+                    lastNonComment = publishIndex;
+                    continue;
+                }
+                var topic = this._extractPublishTopic(lines, i, publishIndex), docString = this._extractPublishDocString(lines, i);
+                ret.push({
+                    docString: docString,
+                    topic: topic,
+                    methodName: methodData.name
+                });
+            }
+            return ret;
+        },
+        _extractPublishTopic: function(lines, lineIndex, charIndex) {
+            var getNextChar = function() {
+                if(lineIndex >= lines.length) return -1;
+                if(charIndex === lines[lineIndex].length - 1) {
+                    charIndex = 0;
+                    lineIndex++;
+                }
+                else {
+                    charIndex++;
+                }
+                return lines[lineIndex][charIndex];
+            };
+            var curChar = lines[lineIndex][charIndex];
+            var topic = "", topicStarted = false, openQuote='', singleQuoteCount = 0, doubleQuoteCount = 0;
+            do {
+                if(openQuote && openQuote === curChar && !(singleQuoteCount%2) && !(doubleQuoteCount%2)) {
+                    break;
+                }
+                if(topicStarted) {
+                    topic += curChar;
+                }
+                if(!topicStarted && (curChar === "'" || curChar === '"')) {
+                    openQuote = curChar;
+                    topicStarted = true;
+                }
+                else if(curChar === "'") singleQuoteCount++;
+                else if(curChar === '"') doubleQuoteCount++;
+                curChar = getNextChar();
+
+            }
+            while(curChar !== -1);
+            return topic;
+        },
+        _extractPublishDocString: function(lines, publishIndex) {
+            var docString = [];
+            for(var i = publishIndex-1; i >= 0 && lines[i].match(/\s*\/\//)!=null; --i) {
+				docString.push(lines[i].replace(/\s*\/\//, ""));
+			}
+			return docString.reverse().join("\n");
+        },
 		getClassDocString:function(){
 			// summary: Extract the docstring for the class.
 			
