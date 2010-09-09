@@ -188,4 +188,90 @@
 			{% endfor %}
 		</ul>
 	{% endif %}
+	
+	<!--
+		Extension Points
+	-->
+	{% if tplData.sortedExtensionPointList|length %}
+		<h2>Extension Points</h2>
+		<ul class="properties">
+			{% for p in tplData.sortedExtensionPointList %}
+				<li class="property _scope_{{ p.scope }} _visibility_{{ p.visibility }}{% if p.readonly %} _readonly_{% endif %}{% if p.isInherited %} _isInherited_{% endif %}{% if p.isOverridden %} _isOverridden_{% endif %}{% if p.isInherited and not p.isOverridden %} displayNone{% endif %}">
+					<a class="name" href="javascript://" dojoAttachEvent="onclick:_onClickProperty">
+					<!--
+						&lt;Icon for {{ p.scope }}&gt;
+						-->
+<!-- is a SPAN with a class really the right thing here? -->
+						<span class="_visibility_{{ p.visibility }}" alt="Visibility is {{ p.visibility }}">&nbsp;</span>
+						{{ p.name }}
+					</a>
+				</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+
+	
+	<!--
+		Publishes
+	-->
+	{% if tplData.sortedPublishList|length %}
+		<h2>Publishes</h2>
+		<ul class="properties">
+			{% for p in tplData.sortedPublishList %}
+				<li class="property _scope_{{ p.scope }} _visibility_{{ p.visibility }}{% if p.readonly %} _readonly_{% endif %}{% if p.isInherited %} _isInherited_{% endif %}{% if p.isOverridden %} _isOverridden_{% endif %}{% if p.isInherited and not p.isOverridden %} displayNone{% endif %}">
+					<a class="name" href="javascript://" dojoAttachEvent="onclick:_onClickProperty">
+					<!--
+						&lt;Icon for {{ p.scope }}&gt;
+						-->
+<!-- is a SPAN with a class really the right thing here? -->
+						<span class="_visibility_{{ p.visibility }}" alt="Visibility is {{ p.visibility }}">&nbsp;</span>
+						{{ p.topic }}
+					</a>
+					<div class="completeInfo displayNone">
+						<!--
+							Publish info
+						-->
+						{% if p.file %}
+							<div class="publishInfo">
+								published by <a href="{{ p.file.url }}" class="fileName">{{ p.file.name }}</a> (line {{ p.file.lineNumber }})
+							</div>
+						{% endif %}
+						
+						<!--
+							Description.
+						-->
+						{% if p.description %}
+							<div class="description">{{ p.description }}</div>
+						{% endif %}
+
+						<!--
+							Parameters
+						-->
+						{% if p.paramsInfo|length %}
+							<table class="parameters">
+								<thead>
+									<tr>
+										<td>Parameter</td>
+										<td>Type</td>
+										<td>Description</td>
+									</tr>
+								</thead>
+								<tbody>
+									{% for a in p.paramsInfo %}
+										<tr class="{% cycle 'odd' '' %}">
+											<td>{{ a.name }}</td>
+											<td>{{ a.datatype }}</td>
+											<td>{{ a.description }}</td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						{% endif %}
+											
+					</div>
+				</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+</div>
 </div>

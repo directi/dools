@@ -22,6 +22,8 @@ dojo.declare(
 			var classData = dools.docs.summary[this.docSyntax].getClass(this.className);
 			classData.sortedMethodList = this._sortObject(classData.methods);
 			classData.sortedPropertyList = this._sortObject(classData.properties);
+			classData.sortedExtensionPointList = this._sortObject(classData.extensionPoints);
+			classData.sortedPublishList = this._sortObject(classData.publishes);
 
 			this.tplData = classData;
 			this.inherited(arguments);
@@ -36,6 +38,10 @@ dojo.declare(
 		},
 
 		_onClickProperty:function(evt){
+			dojo.query(".completeInfo", evt.target.parentNode).toggleClass("displayNone");
+		},
+
+		_onClickPublish:function(evt){
 			dojo.query(".completeInfo", evt.target.parentNode).toggleClass("displayNone");
 		},
 
