@@ -60,15 +60,14 @@ dojo.declare(
             for(var i in reflectMethods){ methodNames.push(i) }
             for(var i in reflectProperties){ propertyNames.push(i) }
 
-            var fpMethodData = fp.getMethodData(methodNames),
+            var allMethodData = fp.getMethodData(methodNames),
+                fpMethodData = allMethodData.methodData,
+                fpPublishData = allMethodData.publishData,
                 fpPropertyData = fp.getPropertyData(propertyNames),
                 dp = new dools.docs.docStringParser[parserName](c),
                 parsedClassDocString = dp.parseClassDocString(fp.getClassDocString());
 
-            // Extract publishes from methods.
-            var publishes = this._getPublishesFromMethods(fpMethodData);
-            
-            // Prepare the methods' and properties data.
+            // Prepare the methods', properties and publishes data.
             var methods = {};
             for (var m in reflectMethods){
                 methods[m] = this._getMethodData(m, reflectMethods[m], fpMethodData[m], dp.parseMethodDocString(fpMethodData[m].docString));
@@ -80,6 +79,10 @@ dojo.declare(
             var extensionPoints = {};
             for (var e in reflectExtensionPoints){
                 extensionPoints[e] = this._getExtensionPointData(reflectExtensionPoints[e]);
+            }
+            var publishes = {};
+            for (var p in fpPublishData){
+                publishes[p] = this._getPublishData(null, null, fpPublishData[p], dp.parsePublishDocString(fpPublishData[p].docString));
             }
             var ret = {
                 // OpenAJAX compatible format of the data.
@@ -223,92 +226,17 @@ dojo.declare(
             };
             return ret;
         },
-        _getPublishesFromMethods: function(fpMethodData) {
-            // FIXME: Does not work for functions with multiple publishes.
-            var ret = [];
-            for(var f in fpMethodData) {
-                var src = fpMethodData[f].sourceCode, openParanCount = 0, openBracketCount = 0, startedParsing = false;
-                var begin = src.search("pw.publish"), end;
-                if(begin === -1) continue;
-                for(end = begin; end < src.length; ++end) {
-                    if(src[end] === '(') openParanCount++;
-                    if(src[end] === '{') openBracketCount++;
-                    if(src[end] === ')') openParanCount--;
-                    if(src[end] === '}') openBracketCount--;
-                    if(startedParsing && !openBracketCount  && !openParanCount) break;
-                    if(openBracketCount || openParanCount) startedParsing = true;
-                }
-                var publishCode = src.substr(begin, end-begin+1);
-                var publishData = this._extractPublishData(publishCode);
-                var returnValue = {
-                    // OpenAJAX compatible.
-                    functionName: fpMethodData[f].name,
-                    sourceCode: src.substr(begin, end),
-                    readonly: false,
-                    scope: false,
-                    visibility: true,
-                    topic: publishData.topic,
-                    paramsInfo: publishData.paramsInfo,                    
-                    description: publishData.description,
-                    //datatype: dpOutput.datatype,
-                    //"default": reflectOutput["default"],
-                    isInherited: false,
-                    isOverridden: false,
-                    file:!fpMethodData[f].fileName ? null : dojo.mixin(this._getFileInfo([fpMethodData[f].fileName])[0], {
-                        lineNumber:fpMethodData[f].lineNumber
-                    }),                    
-                };
-                ret.push(returnValue);
-            }
-            return ret;
-        },
-        _extractPublishData: function(sourceCode) {
-            // sourceCode is a string that starts with "pw.publish".
-            var topic = "", parameters = [], startQuote;            
-
-            var topicStarted = 0, openQuote, singleQuoteCount = 0, doubleQuoteCount = 0, strAfterTopic;
-            for(var i = 0; i < sourceCode.length; ++i) {
-                if(openQuote === sourceCode[i] && !(singleQuoteCount%2) && !(doubleQuoteCount%2)) {
-                    topicStarted = 2;
-                    strAfterTopic = sourceCode.substr(i+1);
-                    break;
-                }
-                if(topicStarted === 1) {
-                    topic += sourceCode[i];
-                }
-                if(topicStarted === 0 && (sourceCode[i] === "'" || sourceCode[i] === '"')) {
-                    openQuote = sourceCode[i];
-                    topicStarted = 1;
-                }
-                else if(sourceCode[i] === "'") singleQuoteCount++;
-                else if(sourceCode[i] === '"') doubleQuoteCount++;
-            }
-
-            var lines = strAfterTopic.split("\n"), comments = [];
-            for(var i in lines) {
-                if(lines[i].match(/\s*\/\//)) {
-                    comments.push(lines[i].replace(/\s*\/\//, ""));
-                }
-            }
-            var commentsParser = new dools.docs.docStringParser.Dojo(), prevProperty = {}, desc = "";
-            var commentObj = commentsParser.parseClassDocString(comments.join("\n")), paramsInfo = [];
-            
-            for(var i in commentObj) {
-                if(i.toLowerCase() === "summary") {
-                    desc = commentObj[i];
-                    continue;
-                }
-                var lines = commentObj[i].split("\n");
-                paramsInfo.push({
-                    name: i,
-                    datatype: lines.shift() || "Unspecified",
-                    description:lines.join("\n") || "Unspecified"
-                });
-            }
+        _getPublishData:function(nothing1, nothing2, fpOutput, dpOutput) {
             return {
-                topic: topic,
-                paramsInfo: paramsInfo,
-                description: desc
+                functionName: fpOutput.methodName,
+                readonly: false,
+                 scope: false,
+                visibility: true,
+                topic: fpOutput.topic,
+                paramsInfo: dpOutput.paramsInfo,                  
+                description: dpOutput.description || "",
+                isInherited: false,
+                isOverridden: false
             };
         }
         
