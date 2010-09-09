@@ -57,7 +57,27 @@ dojo.declare(
 			var markupSyntax = new dools.markup.language["Markdown"];
 			this.markupParser = new dools.markup.Parser(markupSyntax);
 		},
-		
+        parsePublishDocString: function(docString) {
+            var commentObj = this.parseClassDocString(docString), paramsInfo = [], desc = "";;
+            console.log("commentObj:",commentObj);
+            console.log("docString:",docString);
+            for(var i in commentObj) {
+                if(i.toLowerCase() === "summary") {
+                    desc = commentObj[i];
+                    continue;
+                }
+                var lines = commentObj[i].split("\n");
+                paramsInfo.push({
+                    name: i,
+                    datatype: lines.shift() || "Unspecified",
+                    description:lines.join("\n") || "Unspecified"
+                });
+            }
+            return {
+                paramsInfo: paramsInfo,
+                description: desc
+            };
+        },		
 		parsePropertyDocString:function(docString, propertyName){
 			var parsedString = this.inherited(arguments);
 			// we have to split the first line, it contains the property type
