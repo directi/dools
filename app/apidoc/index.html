@@ -3,11 +3,11 @@
 <head>
 	<title>JavaScript Dojo API Docs</title>
 	<style type="text/css">
-		@import "../../../dojotoolkit/dojo/resources/dojo.css";
-		@import "../../../dojotoolkit/dijit/themes/nihilo/nihilo.css";
-		@import "../../../dojotoolkit/dijit/themes/dijit.css";
-		@import "../../../dojotoolkit/dojox/highlight/resources/highlight.css";
-		@import "../../../dojotoolkit/dojox/layout/resources/ExpandoPane.css";
+		@import "../../../../dojotoolkit/dojo/resources/dojo.css";
+		@import "../../../../dojotoolkit/dijit/themes/nihilo/nihilo.css";
+		@import "../../../../dojotoolkit/dijit/themes/dijit.css";
+		@import "../../../../dojotoolkit/dojox/highlight/resources/highlight.css";
+		@import "../../../../dojotoolkit/dojox/layout/resources/ExpandoPane.css";
 
 		@import "../../docs/widget/resources/ApiTree.css";
 		@import "../../docs/widget/resources/ApiList.css";
@@ -21,6 +21,11 @@
 			height:100%;
 		}
 	</style>
+	
+	<script type="text/javascript" src="../../../../dojotoolkit/dojo/dojo.js" djConfig="isDebug:true, parseOnLoad:true, modulePaths:{pw: '../../../app/scripts/pw', dools: '../dools'}"></script>
+	<script type="text/javascript" src="_base.js"></script>
+
+
 </head>
 <body class="nihilo">
 
@@ -150,8 +155,5 @@
 	<!--		}-->
 	<!--	</script>-->
 	<!--</div>-->
-	
-	<script type="text/javascript" src="../../../dojotoolkit/dojo/dojo.js" djConfig="isDebug:true, parseOnLoad:true, modulePaths:{pw: '../../../app/scripts/pw', dools: '../../dools'}"></script>
-	<script type="text/javascript" src="_base.js"></script>
 </body>
 </html>
