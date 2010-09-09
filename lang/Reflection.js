@@ -296,7 +296,16 @@ dojo.declare(
 			}
 			return ret;
 		},
-		
+        getExtensionPoints: function() {
+            var m = this.module.prototype, extensionPoints = [];
+            dojo.require("pw.desktop.BootConfig");           
+            for(var i in components) {
+                if(components[i].className === m.declaredClass) {
+                    extensionPoints = components[i].provides;
+                }
+            }
+            return extensionPoints;
+        },                    		
 		getAncestors:function(){
 			// summary: Get the entire inheritance chain.
 			// returns: An array which could look like this:
