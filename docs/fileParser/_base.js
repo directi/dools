@@ -61,7 +61,8 @@ dojo.declare(
 				this.sourceCode += s+"\n";
 			}
 		},
-		
+
+		// Unused function
 		parseAsClass:function(){
 			// summary: Get the doc blocks for the parts of the class (properties, functions, etc.).
 			// description: We do it simpler by using reflection so we don't need
@@ -85,6 +86,7 @@ dojo.declare(
 			};
 		},
 		
+		// Unused function
 		parseAsMethod:function(){
 			// summary: Get the doc blocks for the parts of the class (properties, functions, etc.).
 			var parts = this.moduleName.split(".");
