@@ -58,18 +58,15 @@ dojo.declare(
 		
 		_extractDocString:function(startPosition){
 			// summary:
-			// 		Extract the docstring only. Which means all lines after the "function(){" that start with double slashes.
+			// 		Extract the docstring only.
 			
-			// Go through the lines, until the "){" was found, which marks the end of the parameters and the
-			// start of the function body, where the docstring should be the first thing in.
-			var lines = this.sourceCode.substr(startPosition).split("\n"),
-				endOfParameterLine = 0;
-			//if (startAtLine==undefined){
-				dojo.some(lines, function(item, index){ // dojo.some stops when return is true, which is "){" was found, and the index is the line we need. Good stuff :-)
-					endOfParameterLine = index;
-					return item.match(/\)\s*\{/)!=null;
-				});
-			//}
+			// Go through the lines, until the "//" is found, which marks the beginning of
+			// the docstring.
+			var lines = this.sourceCode.substr(startPosition).split("\n"), endOfParameterLine = 0;
+			dojo.some(lines, function(item, index){
+				return item.match(/\s*\/\//)!=null;
+				endOfParameterLine = index;
+			});
 			var docString = [];
 			for (var i=endOfParameterLine+1, l=lines.length; i<l && lines[i].match(/\s*\/\//)!=null; i++){
 				docString.push(lines[i].replace(/\s*\/\//, ""));
